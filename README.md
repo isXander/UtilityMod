@@ -3,6 +3,7 @@ Builds on Hypixel's '/play' command. Adds automatic requeuing features, better s
 
 # License
 This mod is owned by isXander. Even though it is public and open source, does not mean it should be copied and released as another mod. If you would like to use a substantial amount of my code and plan to release it to the public, please get in contact with me at either my 
+
 Twitter: @isXanderyt 
 
 Discord: isXander#4285 
