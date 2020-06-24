@@ -1,0 +1,4 @@
+command.prefix=§7§l[§9§lE§e§lP§7§l] §r
+command.incorrectusage=§cIncorrect Usage! Use §7§o'/easyplay help' §r§cfor help.
+command.helpmessage=§9§lEasy§e§lPlay §b§lHelp Menu\n§2§lSyntax: §r§aYou can use §7§o\'/easyplay\' \'/ep\' \'/ezp\' \'/eplay\'§r§a or §7§o\'/easyp\'\n§2§lHow to use: §r§aJust type whatever game you want and it should automatically queue you into a game!\n§2§lHow do I specify the game? §r§aThe mod has coded in most ways of saying the game you want, but you can see a full list at http://isxander.co.uk/mods/easyplay/games.
+info.author=Author: 

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "easyplay",
+  "name": "EasyPlay",
+  "description": "A nice simple mod to improve on hypixel's /play command. With added QOL features.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "mods.isxander.co.uk",
+  "updateUrl": "",
+  "authorList": ["isXander"],
+  "credits": "isXander",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
