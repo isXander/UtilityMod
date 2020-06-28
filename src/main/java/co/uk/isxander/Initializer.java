@@ -1,16 +1,17 @@
 package co.uk.isxander;
 
-import co.uk.isxander.utilities.antisnipe.AntiSnipeListener;
-import co.uk.isxander.utilities.antisnipe.AntiSnipeCMD;
-import co.uk.isxander.utilities.easyplay.easyPlayCMD;
-import co.uk.isxander.utilities.easyplay.easyPlayListner;
+import co.uk.isxander.Utilities.antisnipe.AntiSnipeListener;
+import co.uk.isxander.Utilities.antisnipe.AntiSnipeCMD;
+import co.uk.isxander.Utilities.easyplay.easyPlayCMD;
+import co.uk.isxander.Utilities.easyplay.easyPlayListner;
 
-import co.uk.isxander.config.Config;
-import co.uk.isxander.modcore.ModCoreInstaller;
+import co.uk.isxander.Config.Config;
+import co.uk.isxander.Modcore.ModCoreInstaller;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -24,7 +25,7 @@ public class Initializer {
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_NAME);
 
     public Config utilCFG;
-    @Mod.Instance(Reference.MOD_ID)
+    @Instance(Reference.MOD_ID)
     public static Initializer instance;
 
     public Config getUtilCFG() {
@@ -34,7 +35,6 @@ public class Initializer {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         LOGGER.log(Level.INFO, "Starting Pre Initialization Stage...");
-        LOGGER.log(Level.INFO, "Couldn't find any pre-initializers.");
         LOGGER.log(Level.INFO, "Finished Pre Initialization Stage");
     }
 

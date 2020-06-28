@@ -2,6 +2,7 @@ package co.uk.isxander;
 
 import net.minecraft.client.resources.I18n;
 
+
 public class Reference {
 
     public static final String MOD_ID = "isxanderutils";
@@ -11,7 +12,7 @@ public class Reference {
 
 
     public static String getPrefix() {
-        return I18n.format("easyplay.command.prefix");
+        return I18n.format("command.prefix");
     }
 
     public static String getEPIncorrectUsage() {
