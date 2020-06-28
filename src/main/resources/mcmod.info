@@ -1,0 +1,16 @@
+[
+{
+  "modid": "isxanderutils",
+  "name": "isXander's Utility Mod",
+  "description": "A bunch of custom-made hypixel mods to make the game even more easy to manage.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "github.isxander.co.uk",
+  "updateUrl": "",
+  "authorList": ["isXander"],
+  "credits": "isXander",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
