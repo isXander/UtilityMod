@@ -1,11 +1,9 @@
 package co.uk.isxander.utilities.antisnipe;
 
 import co.uk.isxander.config.Config;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
 
 
 public class AntiSnipeListener {
@@ -18,6 +16,9 @@ public class AntiSnipeListener {
                     event.entityPlayer.setInvisible(true);
                     event.setCanceled(true);
                     break;
+                }
+                else {
+                    event.entityPlayer.setInvisible(false);
                 }
             }
         }
