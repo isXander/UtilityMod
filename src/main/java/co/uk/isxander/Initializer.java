@@ -1,12 +1,12 @@
 package co.uk.isxander;
 
-import co.uk.isxander.Utilities.antisnipe.AntiSnipeListener;
-import co.uk.isxander.Utilities.antisnipe.AntiSnipeCMD;
-import co.uk.isxander.Utilities.easyplay.easyPlayCMD;
-import co.uk.isxander.Utilities.easyplay.easyPlayListner;
+import co.uk.isxander.utilities.antisnipe.AntiSnipeListener;
+import co.uk.isxander.utilities.antisnipe.AntiSnipeCMD;
+import co.uk.isxander.utilities.easyplay.easyPlayCMD;
+import co.uk.isxander.utilities.easyplay.easyPlayListner;
 
-import co.uk.isxander.Config.Config;
-import co.uk.isxander.Modcore.ModCoreInstaller;
+import co.uk.isxander.config.Config;
+import co.uk.isxander.modcore.ModCoreInstaller;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
