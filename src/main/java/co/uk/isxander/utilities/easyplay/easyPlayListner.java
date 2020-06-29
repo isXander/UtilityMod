@@ -33,7 +33,7 @@ public class easyPlayListner {
         String rawText = EnumChatFormatting.getTextWithoutFormattingCodes(event.message.getUnformattedText());
 
         if (Config.isEasyPlayEnabled()) {
-            if (rawText.toLowerCase().contains("sending you to")) {
+            if (rawText.toLowerCase().contains("sending you to") || rawText.toLowerCase().contains("sending to server")) {
                 if (Config.shouldHideSendMsgs()) {
                     event.setCanceled(true);
                     return;
@@ -79,6 +79,11 @@ public class easyPlayListner {
                 Matcher killMessageMatcher = killMessagePattern.matcher(rawText);
                 Matcher usernameMatcher = usernamePattern.matcher(rawText.split(" ")[0]);
 
+                if (line.toLowerCase().contains("you have been eliminated")) {
+                    if (gameChecker) {
+                        requeuePlayer(previousMode);
+                    }
+                }
 
                 if (usernameMatcher.matches() && killMessageMatcher.find()) {
 

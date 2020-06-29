@@ -9,6 +9,7 @@ import me.kbrewster.exceptions.APIException;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.util.BlockPos;
 import org.apache.logging.log4j.Level;
 
 import me.kbrewster.mojangapi.MojangAPI;
@@ -60,7 +61,11 @@ public class AntiSnipeCMD extends CommandBase {
     }
 
     public String getCommandUsage(ICommandSender sender) {
-        return "";
+        return "/" + getCommandName() + " [add|delete|list|options]";
+    }
+
+    public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
+        return args.length == 1 ? getListOfStringsMatchingLastWord(args, "add", "delete", "list", "options") : null;
     }
 
     public int getRequiredPermissionLevel() {
@@ -118,14 +123,23 @@ public class AntiSnipeCMD extends CommandBase {
                 MinecraftUtils.sendMessage(Reference.getPrefix(), Reference.getEPHelpMessage());
             }
             else if (args[0].equalsIgnoreCase("list")){
-                MinecraftUtils.sendMessage("", "§2§lYour AntiSnipe List");
-                for (int i = 0; i < getHiddenPlayers().size(); i++) {
-                    try {
-                        MinecraftUtils.sendMessage("", "§a" + MojangAPI.getUsername(UUID.fromString(getHiddenPlayers().get(i))));
-                    } catch (IOException | APIException e) {
-                        e.printStackTrace();
+                if (!getHiddenPlayers().isEmpty()) {
+                    MinecraftUtils.sendMessage("", "§2§lYour AntiSnipe List");
+                    for (int i = 0; i < getHiddenPlayers().size(); i++) {
+                        try {
+                            MinecraftUtils.sendMessage("", "§a" + MojangAPI.getUsername(UUID.fromString(getHiddenPlayers().get(i))));
+                        } catch (IOException | APIException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
+                else {
+                    MinecraftUtils.sendMessage(Reference.getPrefix(), "§cNobody is on your antisnipe list!");
+                }
+
+            }
+            else if (args[0].equalsIgnoreCase("config") || args[0].equalsIgnoreCase("options") || args[0].equalsIgnoreCase("menu")){
+                ModCore.getInstance().getGuiHandler().open(Initializer.instance.getUtilCFG().gui());
             }
             else {
                 MinecraftUtils.sendMessage(Reference.getPrefix(), Reference.getEPIncorrectUsage());

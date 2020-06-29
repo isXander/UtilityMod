@@ -1,7 +1,10 @@
 package co.uk.isxander.utilities.antisnipe;
 
 import co.uk.isxander.config.Config;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.scoreboard.ScoreObjective;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -23,4 +26,9 @@ public class AntiSnipeListener {
             }
         }
     }
+
+//    @SubscribeEvent
+//    public void renderGameOverlay(RenderGameOverlayEvent event) {
+//        System.out.println(Minecraft.getMinecraft().theWorld.getScoreboard().func96539_a);
+//    }
 }
