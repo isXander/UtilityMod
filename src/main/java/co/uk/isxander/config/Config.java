@@ -43,7 +43,7 @@ public class Config extends Vigilant {
             name = "Requeue delay",
             category = "EasyPlay",
             subcategory = "Functionality",
-            description = "Time in seconds. Adds a delay to the requeuing to be compatible with mods such as AutoGG",
+            description = "Time in seconds. Adds a delay to the requeuing to be compatible with mods such as AutoGG.",
             max = 10
     )
     private static int requeueDelay = 5;
@@ -75,6 +75,24 @@ public class Config extends Vigilant {
     )
     private static boolean antiSnipeEnabled = true;
 
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Hide players",
+            category = "AntiSnipe",
+            subcategory = "Functionality",
+            description = "Prevents rendering players if they are on your AntiSnipe list."
+    )
+    private static boolean hidePlayers = false;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Warns if a sniper is in your lobby",
+            category = "AntiSnipe",
+            subcategory = "Functionality",
+            description = "Warns you in chat if someone in your sniper list is in your lobby."
+    )
+    private static boolean warnSnipers = true;
+
 
     public static boolean isEasyPlayEnabled() {
         if (MinecraftUtils.isHypixel()) {
@@ -86,6 +104,14 @@ public class Config extends Vigilant {
 
     public static boolean isAntiSnipeEnabled() {
         return antiSnipeEnabled;
+    }
+
+    public static boolean doHidePlayers() {
+        return hidePlayers;
+    }
+
+    public static boolean doWarnSnipers() {
+        return warnSnipers;
     }
 
     public static boolean shouldRequeueIfFail() {

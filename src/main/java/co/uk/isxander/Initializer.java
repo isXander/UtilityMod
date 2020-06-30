@@ -2,8 +2,8 @@ package co.uk.isxander;
 
 import co.uk.isxander.utilities.antisnipe.AntiSnipeListener;
 import co.uk.isxander.utilities.antisnipe.AntiSnipeCMD;
-import co.uk.isxander.utilities.easyplay.easyPlayCMD;
-import co.uk.isxander.utilities.easyplay.easyPlayListner;
+import co.uk.isxander.utilities.easyplay.EasyPlayCMD;
+import co.uk.isxander.utilities.easyplay.EasyPlayListner;
 
 import co.uk.isxander.config.Config;
 import co.uk.isxander.modcore.ModCoreInstaller;
@@ -54,8 +54,8 @@ public class Initializer {
         MinecraftForge.EVENT_BUS.register(new AntiSnipeListener());
         //easyPlay
         LOGGER.log(Level.INFO, "Initializing EasyPlay...");
-        ClientCommandHandler.instance.registerCommand(new easyPlayCMD());
-        MinecraftForge.EVENT_BUS.register(new easyPlayListner());
+        ClientCommandHandler.instance.registerCommand(new EasyPlayCMD());
+        MinecraftForge.EVENT_BUS.register(new EasyPlayListner());
         LOGGER.log(Level.INFO, "Finished Initialization Stage");
 
     }

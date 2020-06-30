@@ -3,6 +3,7 @@ package co.uk.isxander.utilities.antisnipe;
 import club.sk1er.mods.core.ModCore;
 import club.sk1er.mods.core.util.MinecraftUtils;
 import club.sk1er.mods.core.util.Multithreading;
+import club.sk1er.mods.core.util.UUIDUtil;
 import co.uk.isxander.Initializer;
 import co.uk.isxander.Reference;
 import me.kbrewster.exceptions.APIException;
@@ -21,17 +22,25 @@ import java.util.UUID;
 
 public class AntiSnipeCMD extends CommandBase {
 
-    private static List<String> hiddenPlayers = new ArrayList<String>() {{
+    private static boolean hideAll = false;
+
+    public static boolean canHideAll() {
+        return hideAll;
+    }
+
+    private static List<UUID> hiddenPlayers = new ArrayList<UUID>() {{
         String path = "./config/antiSnipeHiddenPlayers.list";
+        List<String> temp = new ArrayList<>();
         Multithreading.runAsync(() -> {
             try {
                 File file = new File(path);
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
 
+                UUID uuidLine = null;
                 String line;
                 while((line = br.readLine()) != null) {
-                    add(line);
+                    add(UUID.fromString(line));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -40,7 +49,7 @@ public class AntiSnipeCMD extends CommandBase {
 
     }};
 
-    public static List<String> getHiddenPlayers() {
+    public static List<UUID> getHiddenPlayers() {
         return hiddenPlayers;
     }
 
@@ -73,11 +82,11 @@ public class AntiSnipeCMD extends CommandBase {
     }
 
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-        String arg1UUID;
+        UUID arg1UUID;
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("add")) {
                 try {
-                    arg1UUID = MojangAPI.getUUID(args[1]).toString();
+                    arg1UUID = MojangAPI.getUUID(args[1]);
                 } catch (APIException | NullPointerException e) {
                     Initializer.LOGGER.log(Level.ERROR, "Inputted username could not be found in the mojang database.");
                     MinecraftUtils.sendMessage(Reference.getPrefix(), "§cUsername probably doesn't exist! Otherwise, something went really wrong.");
@@ -98,7 +107,7 @@ public class AntiSnipeCMD extends CommandBase {
             }
             else if (args[0].equalsIgnoreCase("del") || args[0].equalsIgnoreCase("delete") || args[0].equalsIgnoreCase("remove") || args[0].equalsIgnoreCase("rem")) {
                 try {
-                    arg1UUID = MojangAPI.getUUID(args[1]).toString();
+                    arg1UUID = MojangAPI.getUUID(args[1]);
                 } catch (APIException | NullPointerException e) {
                     Initializer.LOGGER.log(Level.ERROR, "Inputted username could not be found in the mojang database.");
                     MinecraftUtils.sendMessage(Reference.getPrefix(), "§cUsername probably doesn't exist! Otherwise, something went really wrong.");
@@ -111,7 +120,7 @@ public class AntiSnipeCMD extends CommandBase {
                 }
                 if(getHiddenPlayers().contains(arg1UUID)) {
                     removeHiddenPlayer(arg1UUID);
-                    MinecraftUtils.sendMessage(Reference.getPrefix(), "§2 " + args[1] + "§a was removed from your antisnipe list.");
+                    MinecraftUtils.sendMessage(Reference.getPrefix(), "§2" + args[1] + "§a was removed from your antisnipe list.");
                 }
                 else {
                     MinecraftUtils.sendMessage(Reference.getPrefix(), "§cUnknown argument!");
@@ -127,7 +136,7 @@ public class AntiSnipeCMD extends CommandBase {
                     MinecraftUtils.sendMessage("", "§2§lYour AntiSnipe List");
                     for (int i = 0; i < getHiddenPlayers().size(); i++) {
                         try {
-                            MinecraftUtils.sendMessage("", "§a" + MojangAPI.getUsername(UUID.fromString(getHiddenPlayers().get(i))));
+                            MinecraftUtils.sendMessage("", "§a" + MojangAPI.getUsername(getHiddenPlayers().get(i)));
                         } catch (IOException | APIException e) {
                             e.printStackTrace();
                         }
@@ -140,6 +149,20 @@ public class AntiSnipeCMD extends CommandBase {
             }
             else if (args[0].equalsIgnoreCase("config") || args[0].equalsIgnoreCase("options") || args[0].equalsIgnoreCase("menu")){
                 ModCore.getInstance().getGuiHandler().open(Initializer.instance.getUtilCFG().gui());
+            }
+            else if (args[0].equalsIgnoreCase("addall")) {
+                hideAll = true;
+                MinecraftUtils.sendMessage(Reference.getPrefix(), "§aNow hiding all other players.");
+            }
+            else if (args[0].equalsIgnoreCase("delall")) {
+                hideAll = false;
+                MinecraftUtils.sendMessage(Reference.getPrefix(), "§aNow showing all other players.");
+            }
+            else if (args[0].equalsIgnoreCase("clear")) {
+                for (int i = 0; i < getHiddenPlayers().size(); i++) {
+                    removeHiddenPlayer(getHiddenPlayers().get(i));
+                }
+                MinecraftUtils.sendMessage(Reference.getPrefix(), "§aCleared you antisnipe list.");
             }
             else {
                 MinecraftUtils.sendMessage(Reference.getPrefix(), Reference.getEPIncorrectUsage());
@@ -155,7 +178,7 @@ public class AntiSnipeCMD extends CommandBase {
     }
 
 
-    public static void addHiddenPlayer(String uuid) {
+    public static void addHiddenPlayer(UUID uuid) {
         String path = "./config/antiSnipeHiddenPlayers.list";
 
         Multithreading.runAsync(() -> {
@@ -171,9 +194,9 @@ public class AntiSnipeCMD extends CommandBase {
         });
     }
 
-    public static void removeHiddenPlayer(String uuid) {
+    public static void removeHiddenPlayer(UUID uuid) {
         String path = "./config/antiSnipeHiddenPlayers.list";
-        List<String> allPlayerUUIDS = new ArrayList<>();
+        List<UUID> allPlayerUUIDS = new ArrayList<>();
         Multithreading.runAsync(() -> {
             try {
                 File file = new File(path);
@@ -182,7 +205,7 @@ public class AntiSnipeCMD extends CommandBase {
 
                 String line;
                 while((line = br.readLine()) != null) {
-                    allPlayerUUIDS.add(line);
+                    allPlayerUUIDS.add(UUID.fromString(line));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
