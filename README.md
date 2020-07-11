@@ -4,5 +4,8 @@ Contains alot of useful mods that can make your Minecraft experience better! Bel
 # AntiSnipe
 Allows user to hide certain players from being rendered if they are in the way. Also has a toggleable feature to remove the server name from the scoreboard.
 
+# MyChest
+Highlights chests that you have opened, useful for skywars.
+
 # EasyPlay [BETA]
 Builds on Hypixel's '/play' command. Adds automatic requeuing features, better syntax and an overall better experience.
