@@ -19,8 +19,8 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "0.5"
-group = "co.uk.isxander.utilities" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "0.7.0"
+group = "co.uk.isxander" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "isxanderutils"
 
 minecraft {
@@ -74,9 +74,11 @@ compileJava.options.encoding = 'UTF-8'
 
 jar {
     manifest {
-        attributes "FMLCorePlugin": "co.uk.isxander.utilities.easyplay.modcore.FMLLoadingPlugin",
+        attributes "FMLCorePlugin": "co.uk.isxander.launch.modcore.FMLLoadingPlugin",
                 "ModSide": "CLIENT",
-                "FMLCorePluginContainsFMLMod": "Yes, yes it does"
+                "FMLCorePluginContainsFMLMod": "Yes, yes it does",
+                'Implementation-Title': 'Gradle Quickstart',
+                'Implementation-Version': version
     }
 }
 
