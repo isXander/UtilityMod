@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainCMD extends CommandBase {
+    @Override
     public String getCommandName() {
         return "isxanderutils";
     }
 
+    @Override
     public List getCommandAliases() {
         ArrayList al = new ArrayList<String>();
         al.add("isxanderutils");
@@ -25,14 +27,17 @@ public class MainCMD extends CommandBase {
         return al;
     }
 
+    @Override
     public String getCommandUsage(ICommandSender sender) {
         return "/" + getCommandName();
     }
 
+    @Override
     public int getRequiredPermissionLevel() {
         return -1;
     }
 
+    @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         if (args.length > 1) {
             Messages.sendMessage("There aren't any subcommands!");

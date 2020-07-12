@@ -1,17 +1,18 @@
 package co.uk.isxander.isxanderutils;
 
 import co.uk.isxander.isxanderutils.util.events.RenderEvent.EventTriggers;
-import co.uk.isxander.isxanderutils.utilities.antisnipe.AntiSnipeListener;
-import co.uk.isxander.isxanderutils.utilities.antisnipe.AntiSnipeCMD;
-import co.uk.isxander.isxanderutils.utilities.cleanchat.CleanChatCMD;
-import co.uk.isxander.isxanderutils.utilities.cleanchat.CleanChatListener;
-import co.uk.isxander.isxanderutils.utilities.easyplay.EasyPlayCMD;
-import co.uk.isxander.isxanderutils.utilities.easyplay.EasyPlayListner;
+import co.uk.isxander.isxanderutils.mods.particlemod.ParticleModCMD;
+import co.uk.isxander.isxanderutils.mods.particlemod.ParticleModListener;
+import co.uk.isxander.isxanderutils.mods.antisnipe.AntiSnipeListener;
+import co.uk.isxander.isxanderutils.mods.antisnipe.AntiSnipeCMD;
+import co.uk.isxander.isxanderutils.mods.cleanchat.CleanChatCMD;
+import co.uk.isxander.isxanderutils.mods.cleanchat.CleanChatListener;
+import co.uk.isxander.isxanderutils.mods.easyplay.EasyPlayCMD;
+import co.uk.isxander.isxanderutils.mods.easyplay.EasyPlayListener;
 
-import co.uk.isxander.isxanderutils.config.Config;
-import co.uk.isxander.isxanderutils.utilities.mychest.MyChestCMD;
-import co.uk.isxander.isxanderutils.utilities.mychest.MyChestHighlighter;
-import co.uk.isxander.isxanderutils.utilities.mychest.MyChestListener;
+import co.uk.isxander.isxanderutils.mods.mychest.MyChestCMD;
+import co.uk.isxander.isxanderutils.mods.mychest.MyChestHighlighter;
+import co.uk.isxander.isxanderutils.mods.mychest.MyChestListener;
 import co.uk.isxander.launch.modcore.ModCoreInstaller;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -56,27 +57,31 @@ public class Initializer {
         utilCFG = new Config();
         utilCFG.preload();
 
-        //Main Command
+        // Main
         LOGGER.log(Level.INFO, "Initializing Main Command...");
         ClientCommandHandler.instance.registerCommand(new MainCMD());
-        //antiSnipe
+        // Anti Snipe
         LOGGER.log(Level.INFO, "Initializing AntiSnipe...");
         ClientCommandHandler.instance.registerCommand(new AntiSnipeCMD());
         MinecraftForge.EVENT_BUS.register(new AntiSnipeListener());
-        //easyPlay
+        // Easy Play
         LOGGER.log(Level.INFO, "Initializing EasyPlay...");
         ClientCommandHandler.instance.registerCommand(new EasyPlayCMD());
-        MinecraftForge.EVENT_BUS.register(new EasyPlayListner());
-        //cleanChat
+        MinecraftForge.EVENT_BUS.register(new EasyPlayListener());
+        // Clean Chat
         LOGGER.log(Level.INFO, "Initializing CleanChat...");
         ClientCommandHandler.instance.registerCommand(new CleanChatCMD());
         MinecraftForge.EVENT_BUS.register(new CleanChatListener());
-        //myChest
+        // My Chest
         LOGGER.log(Level.INFO, "Initializing MyChest...");
         ClientCommandHandler.instance.registerCommand(new MyChestCMD());
         MinecraftForge.EVENT_BUS.register(new MyChestListener());
         MinecraftForge.EVENT_BUS.register(myChestHighlighter);
         MinecraftForge.EVENT_BUS.register(new EventTriggers());
+        // Particle Mod
+        LOGGER.log(Level.INFO, "Initializing Particle Mod...");
+        ClientCommandHandler.instance.registerCommand(new ParticleModCMD());
+        MinecraftForge.EVENT_BUS.register(new ParticleModListener());
         LOGGER.log(Level.INFO, "Finished Initialization Stage");
 
     }

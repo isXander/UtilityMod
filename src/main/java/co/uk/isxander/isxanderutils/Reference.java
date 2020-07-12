@@ -1,11 +1,10 @@
 package co.uk.isxander.isxanderutils;
 
-
 public class Reference {
 
     public static final String MOD_ID = "isxanderutils";
     public static final String MOD_NAME = "isXander's Utility Mod";
-    public static final String VERSION = "0.7.0";
+    public static final String VERSION = "0.8.2";
     public static final String AUTHOR = "isXander";
 
     public static String getGradleVersion() {
