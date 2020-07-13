@@ -2,7 +2,7 @@ package co.uk.isxander.isxanderutils.mods.mychest;
 
 import club.sk1er.mods.core.ModCore;
 import co.uk.isxander.isxanderutils.Initializer;
-import co.uk.isxander.isxanderutils.Messages;
+import co.uk.isxander.isxanderutils.util.Messages;
 import co.uk.isxander.isxanderutils.Config;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;

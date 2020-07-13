@@ -23,7 +23,7 @@ public class AntiSnipeListener {
     }
 
     @SubscribeEvent
-    public void prePlayerRender(RenderPlayerEvent.Pre event) {
+    public void prePlayerRender(final RenderPlayerEvent.Pre event) {
         if (Config.isAntiSnipeEnabled()) {
             if (Config.doHidePlayers()) {
                 if (AntiSnipeCMD.canHideAll()) {
@@ -47,7 +47,7 @@ public class AntiSnipeListener {
     }
 
     @SubscribeEvent
-    public void worldLoad(WorldEvent.Load event) {
+    public void worldLoad(final WorldEvent.Load event) {
         if (Config.doWarnSnipers()) {
             if (antiSpamWarn == 0) {
                 MinecraftForge.EVENT_BUS.register(new AntiSnipeTickHandler());

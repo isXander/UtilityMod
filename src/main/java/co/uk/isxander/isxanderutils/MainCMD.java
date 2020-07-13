@@ -1,6 +1,7 @@
 package co.uk.isxander.isxanderutils;
 
 import club.sk1er.mods.core.ModCore;
+import co.uk.isxander.isxanderutils.util.Messages;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;

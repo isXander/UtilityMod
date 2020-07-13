@@ -3,7 +3,7 @@ package co.uk.isxander.isxanderutils.mods.particlemod;
 import club.sk1er.mods.core.ModCore;
 import co.uk.isxander.isxanderutils.Config;
 import co.uk.isxander.isxanderutils.Initializer;
-import co.uk.isxander.isxanderutils.Messages;
+import co.uk.isxander.isxanderutils.util.Messages;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;

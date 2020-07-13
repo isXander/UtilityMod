@@ -1,6 +1,6 @@
 package co.uk.isxander.isxanderutils.mods.antisnipe;
 
-import co.uk.isxander.isxanderutils.Messages;
+import co.uk.isxander.isxanderutils.util.Messages;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
@@ -15,7 +15,7 @@ public class AntiSnipeTickHandler {
     }
 
     @SubscribeEvent
-    public void onTick(TickEvent event) {
+    public void onTick(final TickEvent event) {
         if (mcClient().theWorld == null) return;
 
         for (EntityPlayer player : mcClient().theWorld.playerEntities) {

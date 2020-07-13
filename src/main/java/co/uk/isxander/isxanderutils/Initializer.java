@@ -1,5 +1,6 @@
 package co.uk.isxander.isxanderutils;
 
+import co.uk.isxander.isxanderutils.mods.namehistory.NameHistoryCMD;
 import co.uk.isxander.isxanderutils.util.events.RenderEvent.EventTriggers;
 import co.uk.isxander.isxanderutils.mods.particlemod.ParticleModCMD;
 import co.uk.isxander.isxanderutils.mods.particlemod.ParticleModListener;
@@ -58,7 +59,7 @@ public class Initializer {
         utilCFG.preload();
 
         // Main
-        LOGGER.log(Level.INFO, "Initializing Main Command...");
+        LOGGER.log(Level.INFO, "Initializing isXander's Utility Mod...");
         ClientCommandHandler.instance.registerCommand(new MainCMD());
         // Anti Snipe
         LOGGER.log(Level.INFO, "Initializing AntiSnipe...");
@@ -82,6 +83,8 @@ public class Initializer {
         LOGGER.log(Level.INFO, "Initializing Particle Mod...");
         ClientCommandHandler.instance.registerCommand(new ParticleModCMD());
         MinecraftForge.EVENT_BUS.register(new ParticleModListener());
+        LOGGER.log(Level.INFO, "Initializing Name History Mod...");
+        ClientCommandHandler.instance.registerCommand(new NameHistoryCMD());
         LOGGER.log(Level.INFO, "Finished Initialization Stage");
 
     }

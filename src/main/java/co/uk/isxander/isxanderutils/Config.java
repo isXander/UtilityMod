@@ -218,7 +218,7 @@ public class Config extends Vigilant {
             subcategory = "Criticals",
             description = "Changes how many critical particles are spawned.",
             min = 1,
-            max = 20
+            max = 100
     )
     private static int critMultiplier = 1;
 
@@ -238,7 +238,7 @@ public class Config extends Vigilant {
             subcategory = "Sharpness",
             description = "Changes how many sharp particles are spawned.",
             min = 1,
-            max = 20
+            max = 100
     )
     private static int sharpMultiplier = 1;
 

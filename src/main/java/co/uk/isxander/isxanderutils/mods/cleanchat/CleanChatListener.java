@@ -1,7 +1,7 @@
 package co.uk.isxander.isxanderutils.mods.cleanchat;
 
 import club.sk1er.mods.core.util.MinecraftUtils;
-import co.uk.isxander.isxanderutils.Messages;
+import co.uk.isxander.isxanderutils.util.Messages;
 import co.uk.isxander.isxanderutils.Config;
 import net.minecraft.util.ChatStyle;
 import net.minecraft.util.EnumChatFormatting;
@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CleanChatListener {
     @SubscribeEvent
-    public void onChat(ClientChatReceivedEvent event) {
+    public void onChat(final ClientChatReceivedEvent event) {
         if (Config.isCleanChatEnabled()) {
             String rawText = EnumChatFormatting.getTextWithoutFormattingCodes(event.message.getUnformattedText());
             String formattedText = event.message.getFormattedText();

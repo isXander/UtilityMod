@@ -3,7 +3,7 @@ package co.uk.isxander.isxanderutils.mods.antisnipe;
 import club.sk1er.mods.core.ModCore;
 import club.sk1er.mods.core.util.Multithreading;
 import co.uk.isxander.isxanderutils.Initializer;
-import co.uk.isxander.isxanderutils.Messages;
+import co.uk.isxander.isxanderutils.util.Messages;
 import co.uk.isxander.isxanderutils.Reference;
 import me.kbrewster.exceptions.APIException;
 import net.minecraft.client.Minecraft;

@@ -1,7 +1,7 @@
 package co.uk.isxander.isxanderutils.mods.easyplay;
 
 import club.sk1er.mods.core.util.Multithreading;
-import co.uk.isxander.isxanderutils.Messages;
+import co.uk.isxander.isxanderutils.util.Messages;
 import co.uk.isxander.isxanderutils.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.EnumChatFormatting;
@@ -29,7 +29,7 @@ public class EasyPlayListener {
 
 
     @SubscribeEvent
-    public void onChat(ClientChatReceivedEvent event) {
+    public void onChat(final ClientChatReceivedEvent event) {
         String rawText = EnumChatFormatting.getTextWithoutFormattingCodes(event.message.getUnformattedText());
 
         if (Config.isEasyPlayEnabled()) {
@@ -109,18 +109,18 @@ public class EasyPlayListener {
 
 
     @SubscribeEvent
-    public void LeaveServer(PlayerEvent.PlayerLoggedOutEvent event) {
+    public void LeaveServer(final PlayerEvent.PlayerLoggedOutEvent event) {
         Config.currentGamemode = "";
     }
 
     @SubscribeEvent
-    public void worldSwap(WorldEvent.Unload event) {
+    public void worldSwap(final WorldEvent.Unload event) {
         Config.currentGamemode = "";
         gameChecker = false;
     }
 
     @SubscribeEvent
-    public void worldLoad(WorldEvent.Load event) {
+    public void worldLoad(final WorldEvent.Load event) {
         worldLoaded = true;
     }
 

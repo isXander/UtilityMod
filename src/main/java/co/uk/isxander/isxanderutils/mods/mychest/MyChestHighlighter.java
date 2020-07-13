@@ -27,7 +27,7 @@ public class MyChestHighlighter {
             new Color[]{ Colors.WHITE, Colors.BLACK, Colors.RED, Colors.GREEN, Colors.BLUE, Colors.ORANGE, Colors.PURPLE, Colors.GRAY, Colors.DARK_RED, Colors.YELLOW };
 
     @SubscribeEvent
-    public void onRender(RenderEvent event) {
+    public void onRender(final RenderEvent event) {
         if (!Config.isMyChestEnabled()) return;
         renderer = event.getBuffer();
         event.getBuffer().begin(GL11.GL_LINES, DefaultVertexFormats.POSITION_COLOR);
