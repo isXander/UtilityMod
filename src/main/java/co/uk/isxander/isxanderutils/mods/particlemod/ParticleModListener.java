@@ -47,11 +47,11 @@ public class ParticleModListener {
     private void doRawSharp(Entity entity) {
         InventoryPlayer inv = Minecraft.getMinecraft().thePlayer.inventory;
         ItemStack stack = inv.mainInventory[inv.currentItem];
+        try {
+            stack.getItem();
+        }
+        catch (NullPointerException ignored) { return; }
         if (stack.getItem() instanceof ItemSword) {
-            try {
-                stack.getItem();
-            }
-            catch (NullPointerException ignored) { return; }
             ItemSword sword = (ItemSword) stack.getItem();
             if (sword.hasEffect(stack)) {
                 if (EnchantmentHelper.getEnchantmentLevel(Enchantment.sharpness.effectId, stack) > 0) {
