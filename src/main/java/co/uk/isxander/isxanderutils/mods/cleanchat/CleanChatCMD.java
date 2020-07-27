@@ -20,7 +20,6 @@ public class CleanChatCMD extends CommandBase {
     @Override
     public List getCommandAliases() {
         ArrayList al = new ArrayList<String>();
-        al.add("cc");
         al.add("cleanchat");
         al.add("cleanc");
         al.add("cchat");
